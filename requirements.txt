@@ -1,11 +1,11 @@
 bcrypt
 cryptography
-fastapi
+fastapi~=0.111.0
 psycopg2-binary
 PyMySQL
 python-jose
 python-multipart
-SQLAlchemy
+SQLAlchemy~=2.0.31
 uvicorn
 passlib
 pytest
@@ -13,3 +13,4 @@ httpx
 pytest-asyncio
 aiofiles
 jinja2
+starlette~=0.37.2
