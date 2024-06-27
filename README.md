@@ -57,3 +57,7 @@ sqlite> select * from todos;
 │ 3  │ Feed the dog    │ Get a bone     │ 3        │ 0        │
 └────┴─────────────────┴────────────────┴──────────┴──────────┘
 ```
+
+## Notes
+The folder `.idea` is just part PyCharm IDE settings. It can be ommited. 
+
