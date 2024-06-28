@@ -1,7 +1,7 @@
 ## Setup
 Navigate to the folder containing ***requirements.txt*** in it: `cd ToDoApp`.
 - In terminal type `pip install -r requirements.txt`
-- This will install all the required dependancies for the project.
+- This will install all the required dependencies for the project.
 
 ## Development
 Run the project with `uvicorn main:app --reload`
@@ -59,5 +59,5 @@ sqlite> select * from todos;
 ```
 
 ## Notes
-The folder `.idea` is just part PyCharm IDE settings. It can be ommited. 
+The folder `.idea` is just part PyCharm IDE settings. It can be omitted. 
 
