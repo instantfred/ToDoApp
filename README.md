@@ -5,22 +5,27 @@ Navigate to the folder containing ***requirements.txt*** in it: `cd ToDoApp`.
 
 ## Development
 Run the project with `uvicorn main:app --reload`
-- If `todos.db` doesn't exists, it'll be created.
+- If `todosapp.db` doesn't exists, it'll be created.
 
 The project should now be available at: http://127.0.0.1:8000/
 - It will by default return all the ToDo items
 - To use Swagger documentation instead, hit http://127.0.0.1:8000/docs
 
+### Testing data
+To try out the endpoints that need authorization you can use the following:
+ - `freddydev` / `password`
+ - `test` / `1234`
+
 ## SQL Queries
-Open `todos.db` with `sqlite3`. This allows us to execute SQL queries in the terminal.
+Open `todosapp.db` with `sqlite3`. This allows us to execute SQL queries in the terminal.
 ```bash
- sqlite3 todos.db
+ sqlite3 todosapp.db
 ```
 
 `insert` and `select` data
 
 ```bash
-❯ sqlite3 todos.db
+❯ sqlite3 todosapp.db
 sqlite> select * from todos;
 sqlite> insert into todos (title, description, priority, complete) values ('Go to the store', 'Buy eggs', 5, False);
 sqlite> insert into todos (title, description, priority, complete) values ('Do homework', 'Math exercises', 2, False);
