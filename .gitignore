@@ -1,0 +1,4 @@
+/.idea
+ToDoApp/routers/__pycache__/
+ToDoApp/__pycache__/
+.DS_Store
