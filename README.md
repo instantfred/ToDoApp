@@ -4,7 +4,7 @@ Navigate to the folder containing ***requirements.txt*** in it: `cd ToDoApp`.
 - This will install all the required dependencies for the project.
 
 ## Development
-Run the project with `uvicorn main:app --reload`
+Run the project with `uvicorn ToDoApp.main:app --reload`
 - If `todosapp.db` doesn't exists, it'll be created.
 
 The project should now be available at: http://127.0.0.1:8000/
@@ -12,9 +12,15 @@ The project should now be available at: http://127.0.0.1:8000/
 - To use Swagger documentation instead, hit http://127.0.0.1:8000/docs
 
 ### Testing data
+
+#### Manual testing
 To try out the endpoints that need authorization you can use the following:
  - `freddydev` / `password`
  - `test` / `1234`
+
+#### Unit testing
+Run `pytest --disable-warnings` to trigger the project validations
+ - the flag `--disable-warnings` is added to prevent warnings from lib dependencies
 
 ## SQL Queries
 Open `todosapp.db` with `sqlite3`. This allows us to execute SQL queries in the terminal.
