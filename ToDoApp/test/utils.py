@@ -5,7 +5,8 @@ from fastapi.testclient import TestClient
 from ..database import Base
 from ..main import app
 import pytest
-from ..models import Todos
+from ..models import Todos, Users
+from ..routers.auth import bcrypt_context
 
 SQLALCHEMY_DATABASE_URL = 'sqlite:///./testdb.db'
 
@@ -48,4 +49,24 @@ def test_todo():
   yield todo
   with engine.connect() as connection:
     connection.execute(text("DELETE from todos;"))
+    connection.commit()
+
+
+@pytest.fixture
+def test_user():
+  user = Users(
+    username='freddydev',
+    email='freddy@mail.com',
+    role='admin',
+    hashed_password=bcrypt_context.hash('password'),
+    first_name='Freddy',
+    last_name='Ramirez',
+    phone_number='123-456-7890'
+  )
+  db = TestingSessionLocal()
+  db.add(user)
+  db.commit()
+  yield user
+  with engine.connect() as connection:
+    connection.execute(text("DELETE from users;"))
     connection.commit()
