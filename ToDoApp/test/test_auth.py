@@ -1,7 +1,7 @@
 from .utils import *
 from ..routers.auth import authenticate_user, get_db, get_current_user, create_access_token, SECRET_KEY, ALGORITH
 from jose import jwt
-from datetime import datetime, timedelta
+from datetime import timedelta
 import pytest
 from fastapi import HTTPException
 
