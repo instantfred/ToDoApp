@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from ..database import SessionLocal
@@ -10,6 +10,9 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from starlette import status
 from jose import jwt, JWTError
 
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
 router = APIRouter(
     prefix='/auth',
     tags=['auth']
@@ -18,6 +21,7 @@ router = APIRouter(
 SECRET_KEY = '9a929d8534c8b0d56a2a1954250a6c005a30bf29a77aff325cc164f7e23ce4ba'
 ALGORITH = 'HS256'
 
+templates = Jinja2Templates(directory='ToDoApp/templates')
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl='auth/token')
 
@@ -94,6 +98,16 @@ async def create_user(db: db_dependency,
     )
     db.add(create_user_model)
     db.commit()
+
+
+@router.get("/", response_class=HTMLResponse)
+async def authentication_page(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+
+@router.get("/register", response_class=HTMLResponse)
+async def register(request: Request):
+    return templates.TemplateResponse("register.html", {"request": request})
 
 
 @router.post("/token", response_model=Token)
