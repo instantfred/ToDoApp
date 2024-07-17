@@ -15,12 +15,6 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 static_dir = os.path.join(current_dir, "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
-
-@app.get("/healthy")
-def health_check():
-    return {'status': 'Healthy'}
-
-
 app.include_router(auth.router)
 app.include_router(todos.router)
 app.include_router(admin.router)

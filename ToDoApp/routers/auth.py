@@ -29,16 +29,6 @@ bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 oauth2_bearer = OAuth2PasswordBearer(tokenUrl='auth/token')
 
 
-class CreateUserRequest(BaseModel):
-    username: str
-    email: str
-    first_name: str
-    last_name: str
-    password: str
-    role: str
-    phone_number: str
-
-
 class Token(BaseModel):
     access_token: str
     token_type: str
@@ -97,28 +87,11 @@ async def get_current_user(request: Request):
         user_id: int = payload.get('id')
         user_role: str = payload.get('role')
         if username is None or user_id is None:
-            return None
+            return logout(request)
         return {'username': username, 'id': user_id, 'user_role': user_role}
     except JWTError:
         HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
                       detail='Could not validate user.')
-
-
-@router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_user(db: db_dependency,
-                      create_user_request: CreateUserRequest):
-    create_user_model = Users(
-        email=create_user_request.email,
-        username=create_user_request.username,
-        first_name=create_user_request.first_name,
-        last_name=create_user_request.last_name,
-        role=create_user_request.role,
-        hashed_password=bcrypt_context.hash(create_user_request.password),
-        is_active=True,
-        phone_number=create_user_request.phone_number
-    )
-    db.add(create_user_model)
-    db.commit()
 
 
 @router.get("/", response_class=HTMLResponse)
