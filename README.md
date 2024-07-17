@@ -1,3 +1,12 @@
+# General Info
+This a To-do app done in Python using FastAPI. 
+It provides:
+- User authentication and registration.
+- A CRUD for the user's todos.
+- Ability to mark a todo as complete.
+- Swagger documentation for every endpoint implemented.
+- Unit testing via `pytest` for endpoint coverage. 
+
 ## Setup
 Navigate to the folder containing ***requirements.txt*** in it: `cd ToDoApp`.
 - In terminal type `pip install -r requirements.txt`
@@ -8,7 +17,7 @@ Run the project with `uvicorn ToDoApp.main:app --reload`
 - If `todosapp.db` doesn't exists, it'll be created.
 
 The project should now be available at: http://127.0.0.1:8000/
-- It will by default return all the ToDo items
+- It should load the login screen, use the testing data to log in or register as new user.
 - To use Swagger documentation instead, hit http://127.0.0.1:8000/docs
 
 ### Testing data
