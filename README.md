@@ -5,7 +5,10 @@ It provides:
 - A CRUD for the user's todos.
 - Ability to mark a todo as complete.
 - Swagger documentation for every endpoint implemented.
-- Unit testing via `pytest` for endpoint coverage. 
+- Unit testing via `pytest` for endpoint coverage.
+
+Concepts applied here were learned through the Udemy course: https://www.udemy.com/course/fastapi-the-complete-course/
+
 
 ### Live Demo
 https://python-todoapp-deployment.onrender.com/
